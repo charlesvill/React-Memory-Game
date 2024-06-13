@@ -2,11 +2,13 @@ import './App.css'
 import Header from './components/banner'
 import Game from './components/game'
 import Footer from './components/footer'
+import { useMemo, useState } from 'react'
 import { fetchData } from './components/utils'
 
 async function imageAPI(endpoint) {
   const fetch = await fetchData(endpoint);
   console.dir(fetch);
+  return fetch;
 }
 function App() {
 
@@ -14,13 +16,14 @@ function App() {
   let score = 0;
   let max = 0;
   let cards = [];
-  imageAPI(dataUrl);
+  const imgData = useMemo(() => imageAPI(dataUrl), [dataUrl]);
+
+      // game you just pass the collection of cards as html already?
+      // all the logic lives here in the parent, no nested logic in children
 
   return (
     <>
       <Header score={score} max={max} />
-      //game you just pass the collection of cards as html already?
-      //all the logic lives here in the parent, no nested logic in children
       <Game cards={cards} />
       <Footer />
     </>
