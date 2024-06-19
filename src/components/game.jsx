@@ -13,7 +13,6 @@ export default function Game({ cardData }) {
       <div className={"gameContainer"}>
         game container
         <div className={"cardContainer"}>
-          cards container
           {cards}
         </div>
       </div>
