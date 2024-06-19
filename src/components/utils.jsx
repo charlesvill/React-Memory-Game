@@ -22,4 +22,4 @@ async function fetchData(url) {
   }
 }
 
-export { fetchData, processCardData, processJSONData };
+export { fetchData, processJSONData };

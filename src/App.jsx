@@ -2,27 +2,39 @@ import './App.css'
 import Header from './components/banner'
 import Game from './components/game'
 import Footer from './components/footer'
-import { useMemo, useState } from 'react'
-import { fetchData, processCardData, processJSONData } from './components/utils'
+import { useEffect, useState } from 'react'
+import { fetchData, processJSONData } from './components/utils'
 
-async function imageAPI(endpoint) {
-  const fetch = await fetchData(endpoint);
-  const processed = processJSONData(fetch);
-
-  return processed;
-}
 
 function App() {
 
+  const [imgData, setImgData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const dataUrl = 'https://picsum.photos/v2/list?page=1&limit=12';
   let score = 0;
   let max = 0;
-  const imgData = useMemo(() => {
-    return imageAPI(dataUrl)
+
+  useEffect(() => {
+    async function fetchImages(){
+      setLoading(true);
+      try {
+        const fetch = await fetchData(dataUrl);
+        const processed = processJSONData(fetch);
+        setImgData(processed);
+      } catch (err){
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchImages();
   }, [dataUrl]);
 
-  // game you just pass the collection of cards as html already?
-  // all the logic lives here in the parent, no nested logic in children
+  if(loading){
+    return (
+      <div>Loading.....</div>
+    )
+  }
 
   return (
     <>
