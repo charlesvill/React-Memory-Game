@@ -1,15 +1,23 @@
+import Card from "./card"
+const exArr = [{id:0, download_url:"hello world"},{id:1, download_url:"hello world"}]
 /* eslint-disable react/prop-types */
-export default function Game({cards}){
-    // console.dir(cards)
-    return(
-        <>
-            <div className={"gameContainer"}>
-                game container
-                <div className={"cardContainer"}>
-                    cards container
-                </div>
-            </div>
-        </>
-    )
+export default function Game({ cardData }) {
+  console.dir(cardData)
+  const cards = exArr.map(
+    (element) => {
+      return <Card imgSrc={element.download_url} id={element.id}/>
+    }
+  )
+  return (
+    <>
+      <div className={"gameContainer"}>
+        game container
+        <div className={"cardContainer"}>
+          cards container
+          {cards}
+        </div>
+      </div>
+    </>
+  )
 
 }

@@ -8,12 +8,7 @@ function processJSONData(rawArr) {
   )
 }
 
-function processCardData() {
-  //extract the download link of the json
-  //add to the array with the id # and the url
-  // return the array
-}
-
+//bug with response from fetching coming as a promise instead of an array. 
 async function fetchData(url) {
   try {
     const response = await fetch(url, { mode: "cors" });

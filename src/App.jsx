@@ -8,8 +8,6 @@ import { fetchData, processCardData, processJSONData } from './components/utils'
 async function imageAPI(endpoint) {
   const fetch = await fetchData(endpoint);
   const processed = processJSONData(fetch);
-  console.dir(fetch);
-  console.dir(processed);
 
   return processed;
 }
@@ -19,7 +17,6 @@ function App() {
   const dataUrl = 'https://picsum.photos/v2/list?page=1&limit=12';
   let score = 0;
   let max = 0;
-  let cards = [];
   const imgData = useMemo(() => {
     return imageAPI(dataUrl)
   }, [dataUrl]);
@@ -30,7 +27,7 @@ function App() {
   return (
     <>
       <Header score={score} max={max} />
-      <Game cards={cards} />
+      <Game cardData={imgData} />
       <Footer />
     </>
   )
