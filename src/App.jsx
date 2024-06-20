@@ -3,7 +3,7 @@ import Header from './components/banner'
 import Game from './components/game'
 import Footer from './components/footer'
 import { useEffect, useState } from 'react'
-import { fetchData, processJSONData } from './components/utils'
+import { fetchData, processJSONData, shuffle } from './components/utils'
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
       try {
         const fetch = await fetchData(dataUrl);
         const processed = processJSONData(fetch);
-        setImgData(processed);
+        setImgData(shuffle(processed));
       } catch (err){
         console.error(err);
       } finally {
@@ -47,3 +47,5 @@ function App() {
 
 export default App
 
+// look into the randomizing function 
+// look into using a side effect for invoking the randomizer on load

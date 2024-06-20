@@ -1,4 +1,3 @@
-
 function processJSONData(rawArr) {
   return rawArr.map(
     (element) => {
@@ -22,4 +21,13 @@ async function fetchData(url) {
   }
 }
 
-export { fetchData, processJSONData };
+function shuffle(arr) {
+  for(let i = arr.length - 1; i >= 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  console.dir(arr);
+  return arr;
+}
+
+export { fetchData, processJSONData, shuffle };
