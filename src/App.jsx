@@ -10,18 +10,19 @@ function App() {
 
   const [imgData, setImgData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [score, setScore] = useState(0);
+  const [max, setMax] = useState(0);
+
   const dataUrl = 'https://picsum.photos/v2/list?page=1&limit=12';
-  let score = 0;
-  let max = 0;
 
   useEffect(() => {
-    async function fetchImages(){
+    async function fetchImages() {
       setLoading(true);
       try {
         const fetch = await fetchData(dataUrl);
         const processed = processJSONData(fetch);
         setImgData(shuffle(processed));
-      } catch (err){
+      } catch (err) {
         console.error(err);
       } finally {
         setLoading(false);
@@ -30,7 +31,20 @@ function App() {
     fetchImages();
   }, [dataUrl]);
 
-  if(loading){
+  // three fns to pass game.jsx: increment score, resetScore, update max
+
+  function incrementScore(){
+    setScore(score + 1);
+  }
+  function resetScore(){
+    setScore(0);
+  }
+  function updateMax(){
+    setMax(score);
+  }
+
+
+  if (loading) {
     return (
       <div>Loading.....</div>
     )
@@ -39,7 +53,11 @@ function App() {
   return (
     <>
       <Header score={score} max={max} />
-      <Game cardData={imgData} />
+      <Game cardData={imgData} 
+        incrementScore={incrementScore} 
+        resetScore={resetScore} 
+        updateMax={updateMax} 
+      />
       <Footer />
     </>
   )
