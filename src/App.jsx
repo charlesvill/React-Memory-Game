@@ -33,14 +33,19 @@ function App() {
 
   // three fns to pass game.jsx: increment score, resetScore, update max
 
-  function incrementScore(){
+  function incrementScore() {
     setScore(score + 1);
+    if (max <= score + 1) {
+      setMax(score + 1);
+    }
   }
-  function resetScore(){
+  function resetScore() {
     setScore(0);
   }
-  function updateMax(){
-    setMax(score);
+  function updateMax() {
+    if (score > max) {
+      setMax(score);
+    }
   }
 
 
@@ -53,10 +58,10 @@ function App() {
   return (
     <>
       <Header score={score} max={max} />
-      <Game cardData={imgData} 
-        incrementScore={incrementScore} 
-        resetScore={resetScore} 
-        updateMax={updateMax} 
+      <Game cardData={imgData}
+        incrementScore={incrementScore}
+        resetScore={resetScore}
+        updateMax={updateMax}
       />
       <Footer />
     </>

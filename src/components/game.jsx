@@ -16,6 +16,7 @@ export default function Game({
         <Card
           imgSrc={element.download_url}
           key={element.id}
+          id={element.id}
           handleClick={cardClick}
         />
       )
@@ -28,7 +29,6 @@ export default function Game({
     } else {
       setSeenCard([...seenCards, id]);
       incrementScore();
-      updateMax();
     }
   }
 
