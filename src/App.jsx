@@ -54,7 +54,6 @@ function App() {
       <div>Loading.....</div>
     )
   }
-
   return (
     <>
       <Header score={score} max={max} />
@@ -69,6 +68,3 @@ function App() {
 }
 
 export default App
-
-// look into the randomizing function 
-// look into using a side effect for invoking the randomizer on load
