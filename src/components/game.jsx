@@ -25,27 +25,19 @@ export default function Game({
   )
 
   function cardClick(id) {
-    console.log(id + " is being checked");
-    console.dir(seenCards)
     if (seenCards.includes(id)) {
-      console.log("resetting");
-      console.dir(seenCards);
       updateMax();
       resetScore();
       setSeenCard([]);
     } else {
-      console.log("adding " + id + "to seencards arr");
       setSeenCard([...seenCards, id]);
       incrementScore();
     }
-    // const shuffled = shuffle(cards)
-    // setCards(shuffled);
   }
 
   return (
     <>
       <div className={"gameContainer"}>
-        game container
         <div className={"cardContainer"}>
           {cards}
         </div>

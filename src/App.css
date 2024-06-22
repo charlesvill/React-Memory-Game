@@ -5,16 +5,39 @@
   text-align: center;
 }
 
-.cardContainer{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content:space-between;
+.headContentCont {
+  display: flex;
+  margin: 1rem;
+  flex-direction: column;
 }
 
+.instrCont > span:first-child:after {
+ content: " \2662  "
+}
 
-.card > img {
+.scoreCont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.scoreCont > span {
+  margin: .3rem;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card>img {
   width: 15rem;
   border-radius: 8px;
   overflow: hidden;
   height: auto;
+}
+
+.card>img:hover {
+  box-shadow: 0.3em 0.3em .3em rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }

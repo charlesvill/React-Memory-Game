@@ -5,7 +5,6 @@ import Footer from './components/footer'
 import { useEffect, useState } from 'react'
 import { fetchData, processJSONData, shuffle } from './components/utils'
 
-
 function App() {
 
   const [imgData, setImgData] = useState([]);
@@ -31,8 +30,6 @@ function App() {
     fetchImages();
   }, [dataUrl]);
 
-  // three fns to pass game.jsx: increment score, resetScore, update max
-
   function incrementScore() {
     setScore(score + 1);
     if (max <= score + 1) {
@@ -50,7 +47,6 @@ function App() {
     }
   }
 
-
   if (loading) {
     return (
       <div>Loading.....</div>
@@ -59,7 +55,8 @@ function App() {
   return (
     <>
       <Header score={score} max={max} />
-      <Game cardData={imgData}
+      <Game 
+        cardData={imgData}
         incrementScore={incrementScore}
         resetScore={resetScore}
         updateMax={updateMax}

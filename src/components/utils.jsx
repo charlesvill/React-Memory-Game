@@ -7,7 +7,6 @@ function processJSONData(rawArr) {
   )
 }
 
-//bug with response from fetching coming as a promise instead of an array. 
 async function fetchData(url) {
   try {
     const response = await fetch(url, { mode: "cors" });
@@ -26,7 +25,6 @@ function shuffle(arr) {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  console.dir(arr);
   return arr;
 }
 
