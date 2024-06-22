@@ -6,7 +6,7 @@ export default function Footer() {
         <span>Portfolio Link</span>
         <span>
           <a href="https://github.com/charlesvill?tab=repositories">
-            <img src="../../public/github-mark.svg" alt="github logo"/>
+            <img src="/public/github-mark.svg" alt="github logo"/>
             Github Repo
           </a>
         </span>
