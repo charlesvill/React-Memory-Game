@@ -38,9 +38,11 @@ function App() {
     if (max <= score + 1) {
       setMax(score + 1);
     }
+    setImgData(shuffle(imgData));
   }
   function resetScore() {
     setScore(0);
+    setImgData(shuffle(imgData));
   }
   function updateMax() {
     if (score > max) {

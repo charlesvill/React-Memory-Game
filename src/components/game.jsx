@@ -1,6 +1,5 @@
 import Card from "./card"
 import { useState } from "react"
-import { shuffle } from "./utils"
 
 /* eslint-disable react/prop-types */
 
@@ -11,32 +10,36 @@ export default function Game({
   updateMax
 }) {
   const [seenCards, setSeenCard] = useState([]);
-  const [cards, setCards] = useState(
-    cardData.map(
-      (element) => {
-        return (
-          <Card
-            imgSrc={element.download_url}
-            key={element.id}
-            id={element.id}
-            handleClick={cardClick}
-          />
-        )
-      }
-    )
+
+  const cards = cardData.map(
+    (element) => {
+      return (
+        <Card
+          imgSrc={element.download_url}
+          key={element.id}
+          id={element.id}
+          handleClick={cardClick}
+        />
+      )
+    }
   )
 
   function cardClick(id) {
-    const shuffled = shuffle(cards);
-    console.dir(shuffled);
-    setCards(shuffled);
+    console.log(id + " is being checked");
+    console.dir(seenCards)
     if (seenCards.includes(id)) {
+      console.log("resetting");
+      console.dir(seenCards);
       updateMax();
       resetScore();
+      setSeenCard([]);
     } else {
+      console.log("adding " + id + "to seencards arr");
       setSeenCard([...seenCards, id]);
       incrementScore();
     }
+    // const shuffled = shuffle(cards)
+    // setCards(shuffled);
   }
 
   return (
