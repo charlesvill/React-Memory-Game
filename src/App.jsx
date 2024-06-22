@@ -37,10 +37,12 @@ function App() {
     }
     setImgData(shuffle(imgData));
   }
+
   function resetScore() {
     setScore(0);
     setImgData(shuffle(imgData));
   }
+
   function updateMax() {
     if (score > max) {
       setMax(score);
@@ -52,6 +54,7 @@ function App() {
       <div>Loading.....</div>
     )
   }
+
   return (
     <>
       <Header score={score} max={max} />

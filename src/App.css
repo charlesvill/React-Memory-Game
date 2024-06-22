@@ -11,8 +11,8 @@
   flex-direction: column;
 }
 
-.instrCont > span:first-child:after {
- content: " \2662  "
+.instrCont>span:first-child:after {
+  content: " \2662  "
 }
 
 .scoreCont {
@@ -20,7 +20,7 @@
   justify-content: flex-end;
 }
 
-.scoreCont > span {
+.scoreCont>span {
   margin: .3rem;
 }
 
@@ -41,3 +41,15 @@
   box-shadow: 0.3em 0.3em .3em rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a>img {
+  margin-right: .3em;
+  width: 1em;
+  height: auto;
+}
+
